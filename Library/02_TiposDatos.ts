@@ -52,3 +52,25 @@ function lanzarError(mensaje: string): never {
 // null y undefined, porque sí existen, pero no los uses mucho 🤒
 let valorNullo: null = null;
 let valorIndefinido: undefined = undefined;
+
+/**================================
+ *          IMPORTANTE
+ * ================================
+ * 
+ * El String con mayúscula en TypeScript (y en JavaScript) es un objeto envolvente 
+ * del tipo primitivo string. Se usa para crear instancias de cadenas como objetos, 
+ * pero en la mayoría de los casos no es recomendable usarlo.
+ */
+
+let texto1: string = "Hola";  // ✅ String primitivo (recomendado)
+let texto2: String = new String("Hola");  // ⚠️ Objeto String (no recomendado)
+
+console.log(typeof texto1); // "string"
+console.log(typeof texto2); // "object"
+
+/**El problema es que al usar new String(), en lugar de trabajar con un valor simple, 
+ * creas un objeto, lo que puede causar problemas al comparar valores:
+ */
+
+console.log(texto1 === "Hola"); // true
+console.log(texto2 === "Hola");  // false ❌ (porque es un objeto)
